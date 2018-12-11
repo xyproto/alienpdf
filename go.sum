@@ -1,0 +1,4 @@
+github.com/jung-kurt/gofpdf v1.0.0 h1:EroSdlP9BOoL5ssLYf3uLJXhCQMMM2fFxCJDKA3RhnA=
+github.com/jung-kurt/gofpdf v1.0.0/go.mod h1:7Id9E/uU8ce6rXgefFLlgrJj/GYY22cpxn+r32jIOes=
+github.com/xyproto/cookie v0.0.0-20181211105748-06da9c042302 h1:67oOFmXpKtN7enHeJWzR7kOSD1o8Nn25vH3gYX76sDo=
+github.com/xyproto/cookie v0.0.0-20181211105748-06da9c042302/go.mod h1:Jkc0U5QghR0GdJHVetkXRYMciw3dGqpLR69uw8vutsY=
