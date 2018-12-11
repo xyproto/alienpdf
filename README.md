@@ -1,1 +1,1 @@
-[![sample letter](images/example.png)](pdfs/example.pdf)]
+[![sample letter](images/example.png)](pdfs/example.pdf)
