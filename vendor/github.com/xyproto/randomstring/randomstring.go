@@ -1,19 +1,18 @@
-package cookie
-
-// Functions for generating random strings
+// Package randomstring can be used for generating different types of random strings
+package randomstring
 
 import (
 	"math/rand"
 	"time"
 )
 
-// Seed the random number generator. One of many possible ways.
+// Seed the random number generator in one of many possible ways.
 func Seed() {
-	rand.Seed(time.Now().UTC().UnixNano())
+	rand.Seed(time.Now().UTC().UnixNano() + 1337)
 }
 
-// RandomString generates a random string of a given length.
-func RandomString(length int) string {
+// String generates a random string of a given length.
+func String(length int) string {
 	b := make([]byte, length)
 	for i := 0; i < length; i++ {
 		b[i] = byte(rand.Int63() & 0xff)
@@ -21,7 +20,7 @@ func RandomString(length int) string {
 	return string(b)
 }
 
-/*RandomHumanFriendlyString generates a random, but human-friendly, string of
+/* HumanFriendlyString generates a random, but human-friendly, string of
  * the given length. It should be possible to read out loud and send in an email
  * without problems. The string alternates between vowels and consontants.
  *
@@ -29,7 +28,7 @@ func RandomString(length int) string {
  *
  * Example output for length 10: ookeouvapu
  */
-func RandomHumanFriendlyString(length int) string {
+func HumanFriendlyString(length int) string {
 	const (
 		someVowels     = "aeoiu"          // a selection of vowels. email+browsers didn't like "æøå" too much
 		someConsonants = "bdfgklmnoprstv" // a selection of consonants
@@ -75,9 +74,9 @@ func RandomHumanFriendlyString(length int) string {
 	return string(b)
 }
 
-// RandomCookieFriendlyString generates a random, but cookie-friendly, string of
+// CookieFriendlyString generates a random, but cookie-friendly, string of
 // the given length.
-func RandomCookieFriendlyString(length int) string {
+func CookieFriendlyString(length int) string {
 	const allowed = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	b := make([]byte, length)
 	for i := 0; i < length; i++ {

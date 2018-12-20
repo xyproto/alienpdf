@@ -9,11 +9,11 @@ import (
 	"time"
 
 	"github.com/jung-kurt/gofpdf"
-	"github.com/xyproto/cookie"
+	"github.com/xyproto/randomstring"
 )
 
 func init() {
-	rand.Seed(time.Now().UTC().UnixNano())
+	randomstring.Seed()
 }
 
 // Return an alien sentence. May return an empty string.
@@ -23,7 +23,7 @@ func sentence(wordCount int) string {
 		if i > 0 {
 			stringForHumans.WriteString(" ")
 		}
-		word := cookie.RandomHumanFriendlyString(rand.Intn(5) + 2)
+		word := randomstring.HumanFriendlyString(rand.Intn(5) + 2)
 		if i == 0 {
 			word = strings.Title(word)
 		}
@@ -35,9 +35,9 @@ func sentence(wordCount int) string {
 // Return an enire letter
 func messageFromMothership(sentenceCount int) string {
 	var stringsForHumans strings.Builder
-	stringsForHumans.WriteString(strings.Title(cookie.RandomHumanFriendlyString(3)))
+	stringsForHumans.WriteString(strings.Title(randomstring.HumanFriendlyString(3)))
 	stringsForHumans.WriteString(" ")
-	stringsForHumans.WriteString(strings.Title(cookie.RandomHumanFriendlyString(10)))
+	stringsForHumans.WriteString(strings.Title(randomstring.HumanFriendlyString(10)))
 	stringsForHumans.WriteString(",\n\n")
 	for i := 0; i < sentenceCount; i++ {
 		if i > 0 {
@@ -69,13 +69,13 @@ func messageFromMothership(sentenceCount int) string {
 		}
 	}
 	stringsForHumans.WriteString("\n\n")
-	stringsForHumans.WriteString(strings.ToUpper(cookie.RandomHumanFriendlyString(rand.Intn(4) + 5)))
+	stringsForHumans.WriteString(strings.ToUpper(randomstring.HumanFriendlyString(rand.Intn(4) + 5)))
 	stringsForHumans.WriteString("!")
 	return stringsForHumans.String()
 }
 
 func place() string {
-	return strings.Title(cookie.RandomHumanFriendlyString(20))
+	return strings.Title(randomstring.HumanFriendlyString(20))
 }
 
 func main() {
