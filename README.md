@@ -6,13 +6,13 @@
 
 ## Usage
 
-KDE
+Generate a PDF file named `alien.pdf`:
 
-    ./alienpdf && okular alien.pdf
+    ./alienpdf
 
-Gnome
+Which can then be opened, like this for instance:
 
-    ./alienpdf && evince alien.pdf
+    xdg-open alien.pdf
 
 ## Why?
 
