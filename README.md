@@ -2,7 +2,7 @@
 
 ## Why?
 
-This project is just for fun, for generating letters from the mothership.
+This project is just for fun, for testing the excellent [gofpdf](https://github.com/jung-kurt/gofpdf) module.
 
 ## Installation
 
