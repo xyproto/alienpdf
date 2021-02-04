@@ -4,7 +4,6 @@
 *.dll
 *.so
 *.dylib
-alienpdf
 
 # Test binary, build with `go test -c`
 *.test
@@ -13,3 +12,4 @@ alienpdf
 *.out
 
 *.pdf
+mothership
