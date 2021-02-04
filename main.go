@@ -106,6 +106,10 @@ func main() {
 	pdf.Write(5, "\n"+lines[len(lines)-1])
 
 	filename := "mothership.pdf"
+	if len(os.Args) > 1 {
+		filename = os.Args[1]
+	}
+
 	if _, err := os.Stat(filename); !os.IsNotExist(err) {
 		fmt.Fprintf(os.Stderr, "%s already exists!\n", filename)
 		os.Exit(1)
