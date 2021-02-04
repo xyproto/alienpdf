@@ -12,6 +12,8 @@ import (
 	"github.com/xyproto/randomstring"
 )
 
+const versionString = "Mothership 1.0.0"
+
 func init() {
 	randomstring.Seed()
 }
@@ -83,6 +85,13 @@ func place() string {
 }
 
 func main() {
+	fmt.Println(versionString)
+
+	filename := "mothership.pdf"
+	if len(os.Args) > 1 {
+		filename = os.Args[1]
+	}
+
 	timestamp := time.Now().Format("2006-01-02")
 
 	pdf := gofpdf.New("P", "mm", "A4", "")
@@ -105,13 +114,8 @@ func main() {
 	pdf.SetFont("Courier", "B", 12)
 	pdf.Write(5, "\n"+lines[len(lines)-1])
 
-	filename := "mothership.pdf"
-	if len(os.Args) > 1 {
-		filename = os.Args[1]
-	}
-
 	if _, err := os.Stat(filename); !os.IsNotExist(err) {
-		fmt.Fprintf(os.Stderr, "%s already exists!\n", filename)
+		fmt.Fprintf(os.Stderr, "%s already exists\n", filename)
 		os.Exit(1)
 	}
 	fmt.Printf("Writing %s... ", filename)
@@ -119,5 +123,5 @@ func main() {
 		fmt.Fprintf(os.Stderr, "%s\n", err)
 		os.Exit(1)
 	}
-	fmt.Println("done.")
+	fmt.Println("done")
 }
