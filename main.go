@@ -39,12 +39,16 @@ func messageFromMothership(sentenceCount int) string {
 	stringsForHumans.WriteString(" ")
 	stringsForHumans.WriteString(strings.Title(randomstring.HumanFriendlyString(10)))
 	stringsForHumans.WriteString(",\n\n")
+	lastWasNewline := false
 	for i := 0; i < sentenceCount; i++ {
 		if i > 0 {
 			if rand.Intn(5) == 0 {
 				stringsForHumans.WriteString("\n\n")
-			} else {
+				lastWasNewline = true
+			} else if !lastWasNewline {
 				stringsForHumans.WriteString(" ")
+			} else {
+				lastWasNewline = false
 			}
 		}
 		length := int(math.Round(math.Log2(float64(rand.Intn(450) + 1))))
@@ -101,7 +105,7 @@ func main() {
 	pdf.SetFont("Courier", "B", 12)
 	pdf.Write(5, "\n"+lines[len(lines)-1])
 
-	filename := "alien.pdf"
+	filename := "mothership.pdf"
 	if _, err := os.Stat(filename); !os.IsNotExist(err) {
 		fmt.Fprintf(os.Stderr, "%s already exists!\n", filename)
 		os.Exit(1)
