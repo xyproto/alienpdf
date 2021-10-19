@@ -6,7 +6,9 @@ Because who doesn't want to create an alien letter?
 
 ## Installation
 
-    go get -u github.com/xyproto/mothership
+With Go >= 1.17:
+
+    go install github.com/xyproto/mothership@latest
 
 ## Usage
 
