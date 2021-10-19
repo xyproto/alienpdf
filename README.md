@@ -2,7 +2,7 @@
 
 ## Why?
 
-Because who doesn't want to create an alien letter?
+Because it's art.
 
 ## Installation
 
