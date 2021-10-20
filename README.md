@@ -1,4 +1,6 @@
-[![sample letter](images/example.png)](pdfs/example.pdf)
+[![sample letter](img/example.png)](pdfs/example.pdf)
+
+[![sample letter that uses the English letter frequency count](img/example_efreq.png)](pdfs/example_efreq.pdf)
 
 ## Why?
 
