@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"math"
 	"math/rand"
@@ -18,6 +19,8 @@ func init() {
 	randomstring.Seed()
 }
 
+var randStringFunc = randomstring.HumanFriendlyString
+
 // Return an alien sentence. May return an empty string.
 func sentence(wordCount int) string {
 	var stringForHumans strings.Builder
@@ -29,7 +32,7 @@ func sentence(wordCount int) string {
 		} else if i > 0 {
 			stringForHumans.WriteString(" ")
 		}
-		word := randomstring.HumanFriendlyString(rand.Intn(5) + 2)
+		word := randStringFunc(rand.Intn(5) + 2)
 		if i == 0 {
 			word = strings.Title(word)
 		}
@@ -42,9 +45,9 @@ func sentence(wordCount int) string {
 // Return an enire letter
 func messageFromMothership(sentenceCount int) string {
 	var sb strings.Builder
-	sb.WriteString(strings.Title(randomstring.HumanFriendlyString(3)))
+	sb.WriteString(strings.Title(randStringFunc(3)))
 	sb.WriteString(" ")
-	sb.WriteString(strings.Title(randomstring.HumanFriendlyString(10)))
+	sb.WriteString(strings.Title(randStringFunc(10)))
 	sb.WriteString(",\n\n")
 	lastWasNewline := true
 	for i := 0; i < sentenceCount; i++ {
@@ -81,21 +84,29 @@ func messageFromMothership(sentenceCount int) string {
 		}
 	}
 	sb.WriteString("\n\n")
-	sb.WriteString(strings.ToUpper(randomstring.HumanFriendlyString(rand.Intn(4) + 5)))
+	sb.WriteString(strings.ToUpper(randStringFunc(rand.Intn(4) + 5)))
 	sb.WriteString("!")
 	return strings.ReplaceAll(sb.String(), "  ", " ")
 }
 
 func place() string {
-	return strings.Title(randomstring.HumanFriendlyString(20))
+	return strings.Title(randStringFunc(20))
 }
 
 func main() {
 	fmt.Println(versionString)
 
-	filename := "mothership.pdf"
-	if len(os.Args) > 1 {
-		filename = os.Args[1]
+	outputFilenameFlag := flag.String("o", "mothership.pdf", "an output PDF filename")
+	englishLikeFlag := flag.Bool("e", false, "use a letter frequency more similar to English")
+	randomFlag := flag.Bool("r", false, "use a more random letter frequency")
+	flag.Parse()
+
+	filename := *outputFilenameFlag
+
+	if *englishLikeFlag {
+		randStringFunc = randomstring.HumanFriendlyEnglishString
+	} else if *randomFlag {
+		randStringFunc = randomstring.EnglishFrequencyString
 	}
 
 	timestamp := time.Now().Format("2006-01-02")
