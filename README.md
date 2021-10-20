@@ -4,7 +4,7 @@
 
 ## Why?
 
-Because it's art.
+Because it's art. Great art.
 
 ## Installation
 
