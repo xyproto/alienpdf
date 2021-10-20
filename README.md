@@ -2,10 +2,6 @@
 
 [![sample letter that uses the English letter frequency count](img/example_efreq.png)](pdfs/example_efreq.pdf)
 
-## Why?
-
-Because it's art. Great art.
-
 ## Installation
 
 With Go >= 1.17:
