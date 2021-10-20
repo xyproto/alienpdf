@@ -21,8 +21,12 @@ func init() {
 // Return an alien sentence. May return an empty string.
 func sentence(wordCount int) string {
 	var stringForHumans strings.Builder
+	var maybeCommaCounter int
 	for i := 0; i < wordCount; i++ {
-		if i > 0 {
+		if maybeCommaCounter == 3 && rand.Intn(5) == 0 {
+			stringForHumans.WriteString(", ")
+			maybeCommaCounter = 0
+		} else if i > 0 {
 			stringForHumans.WriteString(" ")
 		}
 		word := randomstring.HumanFriendlyString(rand.Intn(5) + 2)
@@ -30,28 +34,27 @@ func sentence(wordCount int) string {
 			word = strings.Title(word)
 		}
 		stringForHumans.WriteString(word)
+		maybeCommaCounter++
 	}
 	return stringForHumans.String()
 }
 
 // Return an enire letter
 func messageFromMothership(sentenceCount int) string {
-	var stringsForHumans strings.Builder
-	stringsForHumans.WriteString(strings.Title(randomstring.HumanFriendlyString(3)))
-	stringsForHumans.WriteString(" ")
-	stringsForHumans.WriteString(strings.Title(randomstring.HumanFriendlyString(10)))
-	stringsForHumans.WriteString(",\n\n")
-	lastWasNewline := false
+	var sb strings.Builder
+	sb.WriteString(strings.Title(randomstring.HumanFriendlyString(3)))
+	sb.WriteString(" ")
+	sb.WriteString(strings.Title(randomstring.HumanFriendlyString(10)))
+	sb.WriteString(",\n\n")
+	lastWasNewline := true
 	for i := 0; i < sentenceCount; i++ {
-		if i > 0 {
-			if rand.Intn(5) == 0 {
-				stringsForHumans.WriteString("\n\n")
-				lastWasNewline = true
-			} else if !lastWasNewline {
-				stringsForHumans.WriteString(" ")
-			} else {
-				lastWasNewline = false
-			}
+		if rand.Intn(5) == 0 {
+			sb.WriteString("\n\n")
+			lastWasNewline = true
+		} else if !lastWasNewline {
+			sb.WriteString(" ")
+		} else {
+			lastWasNewline = false
 		}
 		length := int(math.Round(math.Log2(float64(rand.Intn(450) + 1))))
 		if length == 0 {
@@ -61,23 +64,26 @@ func messageFromMothership(sentenceCount int) string {
 		if generatedString == "" {
 			continue
 		}
-		stringsForHumans.WriteString(generatedString)
+		sb.WriteString(generatedString)
 		if !strings.Contains(generatedString, " ") {
-			stringsForHumans.WriteString("!")
+			sb.WriteString("! ")
 		} else {
-			if rand.Intn(40) == 0 {
-				stringsForHumans.WriteString("?")
+			if rand.Intn(20) == 0 {
+				sb.WriteString("? ")
 			} else if rand.Intn(100) == 0 {
-				stringsForHumans.WriteString("!")
+				sb.WriteString("! ")
 			} else {
-				stringsForHumans.WriteString(".")
+				sb.WriteString(". ")
 			}
 		}
+		if i == 0 {
+			lastWasNewline = false
+		}
 	}
-	stringsForHumans.WriteString("\n\n")
-	stringsForHumans.WriteString(strings.ToUpper(randomstring.HumanFriendlyString(rand.Intn(4) + 5)))
-	stringsForHumans.WriteString("!")
-	return stringsForHumans.String()
+	sb.WriteString("\n\n")
+	sb.WriteString(strings.ToUpper(randomstring.HumanFriendlyString(rand.Intn(4) + 5)))
+	sb.WriteString("!")
+	return strings.ReplaceAll(sb.String(), "  ", " ")
 }
 
 func place() string {
