@@ -1,9 +1,5 @@
 # Alien PDF
 
-[![sample letter](img/example.png)](pdfs/example.pdf)
-
-[![sample letter that uses the English letter frequency count](img/example_efreq.png)](pdfs/example_efreq.pdf)
-
 ## Installation
 
 With Go >= 1.17:
@@ -15,6 +11,12 @@ With Go >= 1.17:
 Generate a PDF file:
 
     ./alienpdf
+
+## Example letters
+
+[![generated letter](img/example.png)](pdfs/example.pdf)
+
+[![generated letter that uses the English letter frequency count](img/example_efreq.png)](pdfs/example_efreq.pdf)
 
 ## General info
 
