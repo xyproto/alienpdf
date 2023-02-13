@@ -1,4 +1,4 @@
-# mothership
+# Alien PDF
 
 [![sample letter](img/example.png)](pdfs/example.pdf)
 
@@ -8,10 +8,15 @@
 
 With Go >= 1.17:
 
-    go install github.com/xyproto/mothership@latest
+    go install github.com/xyproto/alienpdf@latest
 
 ## Usage
 
 Generate a PDF file:
 
-    ./mothership
+    ./alienpdf
+
+## General info
+
+* Version: 1.0.0
+* License: BSD-3
