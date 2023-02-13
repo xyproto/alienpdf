@@ -18,5 +18,5 @@ Generate a PDF file:
 
 ## General info
 
-* Version: 1.0.0
+* Version: 1.0.1
 * License: BSD-3

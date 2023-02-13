@@ -13,7 +13,7 @@ import (
 	"github.com/xyproto/randomstring"
 )
 
-const versionString = "AlienPDF 1.0.0"
+const versionString = "AlienPDF 1.0.1"
 
 func init() {
 	randomstring.Seed()
