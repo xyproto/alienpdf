@@ -1,5 +1,7 @@
 # Alien PDF
 
+Generate letters.
+
 ## Installation
 
 With Go >= 1.17:
