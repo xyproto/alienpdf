@@ -10,7 +10,7 @@ With Go >= 1.17:
 
 Generate a PDF file:
 
-    ./alienpdf
+    alienpdf
 
 ## Example letters
 
