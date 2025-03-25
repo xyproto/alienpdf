@@ -1,6 +1,6 @@
 # Alien PDF
 
-Generate letters, as a form of art.
+Generate meaningless letters, as a form of art.
 
 ## Installation
 
