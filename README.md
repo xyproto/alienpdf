@@ -1,6 +1,6 @@
 # Alien PDF
 
-Generate meaningless letters, as a form of art.
+Generate alien letters, for fun.
 
 ## Installation
 
